@@ -138,3 +138,34 @@ Following steps define how to perform TDD test,
 5. Repeat.
 
 ![TDD](https://miro.medium.com/max/1126/1*UcGzy1kcqcI4ZG-NsXMxjA.png)
+
+
+
+**Code Coverage Tool**
+
+
+Test coverage is one of the many basic metrics used in software development to analyze, monitor, and calculate the accuracy of the code written in a project.
+
+Test coverage is a metric that tests how thoroughly the established code is checked using a test suite.
+
+The Test Coverage Metric used in this project is Java Test Runner as shown below as example:
+
+This is a extension that allows the user to Run and debug JUnit test cases in Visual Studio Code. 
+
+The features include:
+ * Run/Debug Test Cases.
+ * Customize Test Configurations
+ * View Test Report.
+ * View Tests in Test Explorer. 
+ * Show Test Logs.
+
+**Example of the Java Test Runner running:**
+
+![Java Test Runner: vscode-java-test](https://devblogs.microsoft.com/visualstudio/wp-content/uploads/sites/4/2018/02/Java-Test-Runner.png).
+
+- You can 'Run Test/ Debug Test' above the class and above each method which allows you to run a single test case for a method. 
+- Test Explorer on the left hand side displays all the test cases within the project. If you click on specific test case it will direct you to the source code. 
+- The status bar at the bottom show the results after the test case(s) has been            ran/debugged. 
+    - If you click on the result it will navigate you to the Test Report. 
+-   When a test case fails, the user is given a rundown of the mistake, which aids in           identifying the problem's root cause.
+
