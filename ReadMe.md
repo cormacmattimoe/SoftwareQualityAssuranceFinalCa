@@ -167,5 +167,5 @@ The features include:
 - Test Explorer on the left hand side displays all the test cases within the project. If you click on specific test case it will direct you to the source code. 
 - The status bar at the bottom show the results after the test case(s) has been            ran/debugged. 
     - If you click on the result it will navigate you to the Test Report. 
--   When a test case fails, the user is given a rundown of the mistake, which aids in           identifying the problem's root cause.
+-   When a test case fails, the user is given a rundown of the mistake, which aids in identifying the problem's root cause.
 
