@@ -23,7 +23,7 @@ ArrayList<Rubric> listOfRubrics = new ArrayList<>();
     @Test
     public void emptyRubric()
     {
-        Rubric r = controller.createRubric();
+        co
         assertTrue("Should be an object of rubric", r instanceof Rubric);
     }
 

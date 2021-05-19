@@ -38,8 +38,7 @@ import Entities.StudentGrade;
 public class Controller {
 
     public Rubric createRubric(){
-        Rubric r = new Rubric();
-        return r;
+        Rubric r = new Rubric
 
     } 
 /*

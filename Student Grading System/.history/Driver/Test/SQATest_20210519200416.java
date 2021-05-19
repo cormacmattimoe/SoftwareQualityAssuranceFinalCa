@@ -1,13 +1,9 @@
 package Test;
 
-
 import java.util.ArrayList;
-
-import Driver.Controller;
+import Entities.Controller;
 import Entities.Rubric;
 import org.junit.Test;
-
-import static org.junit.Assert.assertTrue;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
@@ -21,10 +17,11 @@ ArrayList<Rubric> listOfRubrics = new ArrayList<>();
  
 
     @Test
-    public void emptyRubric()
+    public void EmptysurveyCreationTest()
     {
-        Rubric r = controller.createRubric();
-        assertTrue("Should be an object of rubric", r instanceof Rubric);
+        Rubric s = test.createSurveyEmpty();
+
+        assertTrue("Should be an object of type survey", s instanceof Survey);
     }
 
 /*

@@ -37,11 +37,7 @@ import Entities.StudentGrade;
 
 public class Controller {
 
-    public Rubric createRubric(){
-        Rubric r = new Rubric();
-        return r;
-
-    } 
+    public Controller 
 /*
     Scanner scan = new Scanner(System.in);
     ArrayList<Rubric> listOfRubrics = new ArrayList<>();

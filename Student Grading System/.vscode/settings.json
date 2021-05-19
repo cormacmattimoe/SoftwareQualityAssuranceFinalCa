@@ -1,0 +1,11 @@
+{
+    "java.project.sourcePaths": [
+        "Driver",
+        "src"
+    ],
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "/Users/cormacmattimoe/Downloads/hamcrest-core-1.3.jar",
+        "/Users/cormacmattimoe/Downloads/junit-4.13.2.jar"
+    ]
+}

@@ -4,10 +4,6 @@ package Driver;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Entities.Criterion;
-import Entities.Rubric;
-import Entities.StudentGrade;
-
 
 //This is main class that controls of the user inputs and data.
 //This class allows the user to choose options from the menu.
@@ -37,12 +33,6 @@ import Entities.StudentGrade;
 
 public class Controller {
 
-    public Rubric createRubric(){
-        Rubric r = new Rubric();
-        return r;
-
-    } 
-/*
     Scanner scan = new Scanner(System.in);
     ArrayList<Rubric> listOfRubrics = new ArrayList<>();
     ArrayList<Criterion> listOfCriteria = new ArrayList<>();
@@ -243,7 +233,7 @@ public class Controller {
 
     public static void main(String[] args) {
       Controller controller = new Controller();
-     // controller.showMenu();
+      controller.showMenu();
 
     }
 }
