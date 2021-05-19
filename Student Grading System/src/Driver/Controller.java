@@ -9,11 +9,23 @@ import Entities.StudentGrade;
 //This is main class that controls of the user inputs and data.
 //This class allows the user to choose options from the menu.
 // class that handles user input and data
+// inside this class should cover all the various parts of grading system 
+// Tasks
+// 1. newStudentGrade 
+// 2. addScoreToGrade
+// 3. getAllStudentGradesForRubric
+// 4. getAverageGrade 
+// 5. getStandardDeviation Grade
+// 6. getMinimumGrade
+// 7. getMaximumGrade
+
+
 public class Controller {
 
     Scanner scan = new Scanner(System.in);
     ArrayList<Rubric> listOfRubrics = new ArrayList<>();
     ArrayList<Criterion> listOfCriteria = new ArrayList<>();
+    ArrayList<StudentGrade> listOfGrades = new ArrayList<>();
  
     StudentGrade tempStudentGrade;
 
@@ -43,7 +55,7 @@ public class Controller {
             {
                 System.out.println("Rubric successfully created"); 
             }
-           // showMenu();
+            showMenu();
             break;
         case("2"):
             System.out.println("Please enter a rubric name:");
@@ -179,6 +191,37 @@ public class Controller {
         System.out.println("Rubric not found");
         return false;   
     }
+
+    public ArrayList<Rubric> getAllRubrics(){
+
+        ArrayList<Rubric> allOfRubrics = new ArrayList<>();
+
+        for(Rubric rubric: listOfRubrics){
+
+            System.out.println(rubric.toString());
+        }
+
+        return allOfRubrics;
+    }
+      // Gets the average score across all graded Students
+      public double getRubricScoreAverage(String name)
+      {
+          int sum = 0 ;
+          int count = 0 ;
+          int avg = 0 ;
+  
+  
+        
+          if(sum != 0 && count != 0)
+          {
+              avg = sum/count ;
+          }
+  
+  
+          return avg ;
+      }
+
+
 
     public static void main(String[] args) {
         Controller controller = new Controller();

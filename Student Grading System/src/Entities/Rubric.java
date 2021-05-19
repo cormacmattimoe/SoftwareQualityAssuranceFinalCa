@@ -41,7 +41,7 @@ public class Rubric {
     @Override
     public String toString() {
         return
-                "Student = " + rubricName 
+                "Rubric name = " + rubricName 
                 + ",Criteria = " + criteria;
     }
 }
