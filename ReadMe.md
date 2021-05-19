@@ -120,3 +120,21 @@ There is a number of different ways to calculte the velocity of the various task
 Now the velocity of the task has been calculated.
 
 This velocity metric will be used to calculate how quickly the team is progressing in comparison to task sizes; the higher the figure, the more tasks are performed.
+
+
+# Test-Driven Development and Unit testing
+
+TDD is a software creation methodology in which test cases are created to define and verify what the code can do. In simple terms, test cases for each feature are developed and checked first, and if the test fails, new code is written to pass the test, resulting in code that is straightforward and bug-free.
+
+***How to perform Test-Driven Development***
+
+
+Following steps define how to perform TDD test,
+
+1. Add a test.
+2. Run all tests and see if any new test fails.
+3. Write some code.
+4. Run tests and Refactor code.
+5. Repeat.
+
+![TDD](https://miro.medium.com/max/1126/1*UcGzy1kcqcI4ZG-NsXMxjA.png)
