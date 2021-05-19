@@ -10,11 +10,13 @@ import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.ResourceBundle.Control;
 
+import static org.junit.Assert.assertEquals;
+
 public class SQATest {
 
 //    testing first commit to test suite
 Controller controller = new Controller();
-ArrayList<Rubric> listOfRubrics = new ArrayList<>(); 
+ArrayList<Rubric> listOfRubrics = new ArrayList<>();x   x   
 
     @Test
     public void EmptysurveyCreationTest()
@@ -39,4 +41,8 @@ ArrayList<Rubric> listOfRubrics = new ArrayList<>();
    }
 
 
+}
+
+
+    
 }

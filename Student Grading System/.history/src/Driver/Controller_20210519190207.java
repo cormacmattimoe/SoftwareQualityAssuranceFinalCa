@@ -206,7 +206,7 @@ public class Controller {
         ArrayList<Rubric> allOfRubrics = new ArrayList<>();
 
         for(Rubric rubric: listOfRubrics)
-        {
+    {}
 
             System.out.println(rubric.toString());
         }

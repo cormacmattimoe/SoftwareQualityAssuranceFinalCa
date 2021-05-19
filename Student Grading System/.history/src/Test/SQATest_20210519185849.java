@@ -8,21 +8,26 @@ import org.junit.Test;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
-import java.util.ResourceBundle.Control;
+
+import static org.junit.Assert.assertEquals;
 
 public class SQATest {
 
 //    testing first commit to test suite
 Controller controller = new Controller();
-ArrayList<Rubric> listOfRubrics = new ArrayList<>(); 
+ArrayList<Rubric> listOfRubrics = new ArrayList<>();
 
-    @Test
-    public void EmptysurveyCreationTest()
-    {
-        Survey s = test.createSurveyEmpty();
 
-        assertTrue("Should be an object of type survey", s instanceof Survey);
-    }
+
+Tester test = new Tester();
+
+@Test
+public void EmptysurveyCreationTest()
+{
+    Survey s = test.createSurveyEmpty();
+
+    assertTrue("Should be an object of type survey", s instanceof Survey);
+}
 
 
     @Test
@@ -39,4 +44,8 @@ ArrayList<Rubric> listOfRubrics = new ArrayList<>();
    }
 
 
+}
+
+
+    
 }

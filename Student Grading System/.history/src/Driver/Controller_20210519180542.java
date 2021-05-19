@@ -43,8 +43,8 @@ public class Controller {
 
     public void showMenu(){
 
-        System.out.println("Welcome to the student Grading System");
-        System.out.println("---------------------------------");
+        System.out.println("Welcome");
+        System.out.println("-----------------------");
         System.out.println("1. Create a rubric");
         System.out.println("2. View a rubric");
         System.out.println("3. View all rubrics");
@@ -116,36 +116,7 @@ public class Controller {
         return true;
 
         }
-
-        //Create a criterion to a rubric 
-        public Boolean createCriterion(String criterionToBeCreated, Rubric rubricname)
-
-        {
-            Criterion tempCriteria = new Criterion();
-            //1. Check to see if the there is already 10 criteria
-            //2. Check to see iof the name exists
-            //3. Else add it
-            if(rubricname.getCriteria().size() > 9)
-            {
-                System.out.println("To many criteria already exist");
-                return false;
-            }
-            listOfCriteria = rubricname.getCriteria();
-            for (Criterion c : listOfCriteria)
-            {
-                if(c.getCriteriaName() == criterionToBeCreated)
-                {
-                System.out.println("Name already exists");
-                return false;
-                }
-    
-            }
-            tempCriteria.setCriteriaName(criterionToBeCreated);
-            rubricname.addCriteria(tempCriteria);
-            return true;
-    
-        }
-// 
+//
     public void getARubric(String nameOfRubric, Rubric rubricReturned)
     {
         rubricReturned = null;
@@ -160,7 +131,33 @@ public class Controller {
 
     }
 
- 
+    public Boolean createCriterion(String criterionToBeCreated, Rubric rubricname)
+
+    {
+        Criterion tempCriteria = new Criterion();
+        //1. Check to see if the there is already 10 criteria
+        //2. Check to see iof the name exists
+        //3. Else add it
+        if(rubricname.getCriteria().size() > 9)
+        {
+            System.out.println("To many criteria already exist");
+            return false;
+        }
+        listOfCriteria = rubricname.getCriteria();
+        for (Criterion c : listOfCriteria)
+        {
+            if(c.getCriteriaName() == criterionToBeCreated)
+            {
+            System.out.println("Name already exists");
+            return false;
+            }
+
+        }
+        tempCriteria.setCriteriaName(criterionToBeCreated);
+        rubricname.addCriteria(tempCriteria);
+        return true;
+
+    }
 
 
     public Boolean addStudentGrade(Criterion criteria, Rubric rubricname, String nameOfStudent,int gradeOfStudent)
@@ -205,8 +202,7 @@ public class Controller {
 
         ArrayList<Rubric> allOfRubrics = new ArrayList<>();
 
-        for(Rubric rubric: listOfRubrics)
-        {
+        for(Rubric rubric: listOfRubrics){1
 
             System.out.println(rubric.toString());
         }

@@ -43,8 +43,8 @@ public class Controller {
 
     public void showMenu(){
 
-        System.out.println("Welcome to the student Grading System");
-        System.out.println("---------------------------------");
+        System.out.println("Welcome");
+        System.out.println("-----------------------");
         System.out.println("1. Create a rubric");
         System.out.println("2. View a rubric");
         System.out.println("3. View all rubrics");
@@ -117,7 +117,7 @@ public class Controller {
 
         }
 
-        //Create a criterion to a rubric 
+        //Create a 
         public Boolean createCriterion(String criterionToBeCreated, Rubric rubricname)
 
         {
@@ -145,7 +145,7 @@ public class Controller {
             return true;
     
         }
-// 
+//
     public void getARubric(String nameOfRubric, Rubric rubricReturned)
     {
         rubricReturned = null;
@@ -205,8 +205,7 @@ public class Controller {
 
         ArrayList<Rubric> allOfRubrics = new ArrayList<>();
 
-        for(Rubric rubric: listOfRubrics)
-        {
+        for(Rubric rubric: listOfRubrics){1
 
             System.out.println(rubric.toString());
         }

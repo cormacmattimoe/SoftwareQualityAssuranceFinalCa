@@ -1,4 +1,4 @@
-package Entities;
+package Entitites;
 
 
 import java.util.ArrayList;
@@ -41,6 +41,7 @@ public class Rubric {
     @Override
     public String toString() {
         return
-                "Rubric name = " + rubricName;
+                "Student = " + rubricName 
+                + ",Criteria = " + criteria;
     }
 }
