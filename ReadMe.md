@@ -165,7 +165,59 @@ The features include:
 
 - You can 'Run Test/ Debug Test' above the class and above each method which allows you to run a single test case for a method. 
 - Test Explorer on the left hand side displays all the test cases within the project. If you click on specific test case it will direct you to the source code. 
-- The status bar at the bottom show the results after the test case(s) has been            ran/debugged. 
+- The status bar at the bottom show the results after the test case(s) has been ran/debugged. 
     - If you click on the result it will navigate you to the Test Report. 
 -   When a test case fails, the user is given a rundown of the mistake, which aids in identifying the problem's root cause.
+
+
+
+# Team Version Control
+
+The main version control that I have used for this assignment is **GitHub**.
+
+
+* Version control, also known as source control, is the practice of tracking and managing changes to software code. Version control systems are software tools that help software teams manage changes to source code over time. 
+
+* Version control software keeps track of every modification to the code. If a mistake is made, developers can turn back the clock and compare earlier versions of the code to help fix the mistake while minimizing disruption to all other team members.
+* When discussing Github it is important to talk about the Gitflow and how this helps to assist the development process.
+
+![GitHub Flow](https://i2.wp.com/build5nines.com/wp-content/uploads/2018/01/GitHub-Flow.png?fit=900%2C310&ssl=1).
+
+## Git Flow
+Git flow is the process of branching in a git project. This process is very useful in collaboration projects and has been adapted and encouraged as a software development "standard practice".
+
+## Advantages of Git Flow
+- Allows for parallel development
+- Supports fixes
+- Develop in isolation
+- Promotes the use of a staging area
+
+
+**For my assignment I have created the following branches: -**
+
+## Structure of branches
+
+1. **master** - main one that is pulled from all other branches
+2. **develop** - this is the branch which all the branches merge into.
+3. **develop_readMe** - All the branches will be merged into this branch before being pulled by the master branch.
+4. **taskEstimation_doc** - contains all the content relating to task estimation and scrum sprint backlog.
+5. **tdd_doc** - contains all the content relating to test driven development and unit testing.
+6.  **codecoveragemetric_doc** - contains all the content relating to the code coverage tool that I have used, including features and benefits of it
+7. **codereview_doc** - contains all the content relating to code reviews and checklist
+8. **develop_studentsystem** - this branch contains the student grade system.
+
+**ReadMe is broken into 5 different topics which my branches show above**
+1. Task Estimation and Scrum Sprint BackLog.
+2. Test Driven Development and Unit Testing
+3. Code Coverage Tool.
+4. Team Version Control.
+5. Code Review Checklist
+
+**Benefits of following this approach for a project**
+1.  Parallel development.
+2.  Release staging area
+3.  Support for fixes
+
+
+
 
