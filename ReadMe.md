@@ -219,5 +219,21 @@ Git flow is the process of branching in a git project. This process is very usef
 3.  Support for fixes
 
 
+# Code Review 
+
+**What is a code review?**
+
+The process through which programmers analyze the code of their peers is known as code review. To share information with one another, as well as to check for flaws and evaluate code quality.
+It has been shown to accelerate and streamline the software development process.
+
+**Benefits to Code Reviews**
+1.  Finding bugs early, when they are cheap to fix.
+2. Coding standards compliance. Code review helps to maintain consistent coding style across    a company.
+3. Teaching and sharing knowledge between the developers.
+
+
+![Code Review](https://research.aimultiple.com/wp-content/uploads/2019/12/codereview.jpg).
+
+
 
 
