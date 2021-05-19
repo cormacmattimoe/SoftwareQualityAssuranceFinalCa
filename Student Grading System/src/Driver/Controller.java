@@ -3,8 +3,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import Entities.Criterion;
-import Entitites.Rubric;
-import Entitites.StudentGrade;
+import Entities.Rubric;
+import Entities.StudentGrade;
 
 //This is main class that controls of the user inputs and data.
 //This class allows the user to choose options from the menu.
