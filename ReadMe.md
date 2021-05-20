@@ -234,6 +234,12 @@ It has been shown to accelerate and streamline the software development process.
 
 ![Code Review](https://research.aimultiple.com/wp-content/uploads/2019/12/codereview.jpg).
 
+## Pull Request
+
+A pull request is a method of submitting your work to an open project. The use of good pull requests within a team's workflow enhances the overall team productivity while minimizing frustration that can occur when an error occurs.
+
+Pull Requests have been shown to be more useful when they are simple to evaluate and test.
+
 
 
 
