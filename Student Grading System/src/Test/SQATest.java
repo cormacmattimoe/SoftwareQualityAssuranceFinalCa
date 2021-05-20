@@ -57,7 +57,7 @@ ArrayList<Rubric> listOfRubrics = new ArrayList<>();
     }
 
     @Test
-    public void testCreateCrierion()
+    public void testCreateCriterion()
     {
         assertTrue(controller.createRubric("Class1"));
         assertTrue(controller.createCriterion("Class1", "C1"));
@@ -118,13 +118,13 @@ ArrayList<Rubric> listOfRubrics = new ArrayList<>();
     // Test for creating a student grade in a rubric
    @Test	
    public void testCreateStudentGrade() {
-	   Rubric rubric= controller.createNewRubric("DT354");
+	   Rubric rubric = controller.createNewRubric("DT354");
 	   String sQACriterion="SQA";
 	   String madCrierion="MAD";
 	   controller.addCriterionToRubric(rubric, sQACriterion);
 	   controller.addCriterionToRubric(rubric, madCrierion);
 	   StudentGrade grade=controller.createStudentGrade(rubric,"Cormac",3);
-	   HashMap<String, Integer> criterionMarks=rubric.getGrades().get(0).getMarks();
+	   HashMap<String, Integer> criterionMarks= rubric.getStudentGrades().get(0).getCriterionMarks();
 	   assertEquals(new Integer(3),criterionMarks.get(sQACriterion));
 	   assertEquals(new Integer(3),criterionMarks.get(madCrierion));
 	   assertEquals("Cormac",grade.getStudentName());
@@ -138,11 +138,12 @@ ArrayList<Rubric> listOfRubrics = new ArrayList<>();
 	   String madCriterion="MAD";
 	   controller.addCriterionToRubric(rubric, sQACriterion);
 	   controller.addCriterionToRubric(rubric, madCriterion);
-	   StudentGrade gStudentGrade = controller.createStudentGrade(rubric,"Tom",2);
-       StudentGrade stGrade = controller.createStudentGrade(rubric,"Paul",1);
-	   assertEquals(2,rubric.getGrades().size());
-	   assertEquals("Tom",rubric.getGrades().get(0).getStudentName());
-	   assertEquals("Paul",rubric.getGrades().get(1).getStudentName());
+	   StudentGrade gStudentGrade = controller.createStudentGrade(rubric,"Tom",4);
+       StudentGrade stGrade = controller.createStudentGrade(rubric,"Paul",3);
+       gStudentGrade.addMark(sQACriterion,1);
+	   assertEquals(2,rubric.getStudentGrades().size());
+	   assertEquals("Tom",rubric.getStudentGrades().get(0).getStudentName());
+	   assertEquals("Paul",rubric.getStudentGrades().get(1).getStudentName());
    }
    
     //Testing if average in rubric is calulated correctly
@@ -155,7 +156,7 @@ ArrayList<Rubric> listOfRubrics = new ArrayList<>();
 	   controller.addCriterionToRubric(rubric, madCriterion);
 	   StudentGrade grade=controller.createStudentGrade(rubric,"Tom",2);
 	   StudentGrade grade2=controller.createStudentGrade(rubric,"Paul",3);
-	   assertEquals(0.5,controller.getAverageForRubric(rubric),0.002);
+	   assertEquals(2.5,controller.getAverageForRubric(rubric),0.002);
    }
 
       //Testing if min in rubric is calulated correctly
@@ -196,8 +197,76 @@ ArrayList<Rubric> listOfRubrics = new ArrayList<>();
         controller.addCriterionToRubric(rubric, madCriterion);
         StudentGrade grade =controller.createStudentGrade(rubric,"Tom",2);
         StudentGrade grade2 =controller.createStudentGrade(rubric,"Paul",3);
-        StudentGrade grade3 =controller.createStudentGrade(rubric,"Paul",1);
+        StudentGrade grade3 =controller.createStudentGrade(rubric,"Sean",1);
 	    assertEquals(0.816,controller.getStandardDeviationForRubric(rubric),0.002);
+   }
+
+
+    //Testing if average in criterion is calulated correctly
+   @Test	
+   public void testAverageForCriterion() {
+    Rubric rubric=controller.createNewRubric("DT354");
+    String sQACriterion="SQA";
+    String madCriterion="MAD";
+    controller.addCriterionToRubric(rubric, sQACriterion);
+    controller.addCriterionToRubric(rubric, madCriterion);
+    StudentGrade grade1 =controller.createStudentGrade(rubric,"Tom",2);
+    StudentGrade grade2 =controller.createStudentGrade(rubric,"Paul",3);
+    StudentGrade grade3 =controller.createStudentGrade(rubric,"Sean",4);
+	grade2.addMark(sQACriterion,2);
+	StudentGrade grade4 =controller.createStudentGrade(rubric,"Conor",5);
+	assertEquals(3.25,controller.getAverageForCriterion(rubric,sQACriterion),0.01);
+   }
+   
+
+    //Testing if MIN in criterion is calulated correctly
+      @Test	
+    public void testMinForCriterion() {
+        Rubric rubric=controller.createNewRubric("DT354");
+        String sQACriterion="SQA";
+        String madCriterion="MAD";
+        controller.addCriterionToRubric(rubric, sQACriterion);
+        controller.addCriterionToRubric(rubric, madCriterion);
+        StudentGrade grade1 =controller.createStudentGrade(rubric,"Tom",2);
+        StudentGrade grade2 =controller.createStudentGrade(rubric,"Paul",3);
+        StudentGrade grade3 =controller.createStudentGrade(rubric,"Sean",4);
+        grade2.addMark(sQACriterion,2);
+        StudentGrade grade4 =controller.createStudentGrade(rubric,"Conor",5);
+        assertEquals(3.25,controller.getAverageForCriterion(rubric,sQACriterion),0.01);
+      }
+
+    //Testing if Min in criterion is calulated correctly
+   @Test	
+   public void testMaxForCriterion() {
+    Rubric rubric=controller.createNewRubric("DT354");
+    String sQACriterion="SQA";
+    String madCriterion="MAD";
+    controller.addCriterionToRubric(rubric, sQACriterion);
+    controller.addCriterionToRubric(rubric, madCriterion);
+    StudentGrade grade1 =controller.createStudentGrade(rubric,"Tom",2);
+    StudentGrade grade2 =controller.createStudentGrade(rubric,"Paul",3);
+    StudentGrade grade3 =controller.createStudentGrade(rubric,"Sean",4);
+	grade2.addMark(sQACriterion,2);
+	StudentGrade grade4 =controller.createStudentGrade(rubric,"Conor",5);
+	assertEquals(2,controller.getMinForCriterion(rubric,sQACriterion),0.01);
+   }
+   
+
+   
+    //Testing if Standard deviation in criterion is calulated correctly
+   @Test	
+   public void testStandardDeviationForCriterion() {
+    Rubric rubric=controller.createNewRubric("DT354");
+    String sQACriterion="SQA";
+    String madCriterion="MAD";
+    controller.addCriterionToRubric(rubric, sQACriterion);
+    controller.addCriterionToRubric(rubric, madCriterion);
+    StudentGrade grade1 =controller.createStudentGrade(rubric,"Tom",2);
+    StudentGrade grade2 =controller.createStudentGrade(rubric,"Paul",3);
+    StudentGrade grade3 =controller.createStudentGrade(rubric,"Sean",4);
+    grade2.addMark(sQACriterion,2);
+    StudentGrade grade4 =controller.createStudentGrade(rubric,"Conor",5);
+    assertEquals(2.0,controller.getMinForCriterion(rubric,sQACriterion),0.01);
    }
    
 

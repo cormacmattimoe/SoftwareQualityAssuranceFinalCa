@@ -149,7 +149,9 @@ public class Controller {
         return true;
 
         }
+        
 
+    
         //Create a criterion to a rubric 
         public Boolean createCriterion(String criterionToBeCreated, String rubricname)
         {
@@ -178,6 +180,7 @@ public class Controller {
             return true;
     
         }
+
        // returns Min number in ArrayList
         public int getMin(ArrayList<Integer> listOfIntegers) {
     
@@ -223,11 +226,11 @@ public class Controller {
 	
 	// Calulates average of all grades in rubric
 	public double getAverageForRubric(Rubric rubric) {
-		List<StudentGrade> grades=rubric.getGrades();
+		List<StudentGrade> listOfGrades=rubric.getStudentGrades();
 		double sum=0;
 		double count=0;
-		for(StudentGrade grade:grades) {
-			HashMap<String, Integer> listOfMarks=grade.getMarks();
+		for(StudentGrade grade:listOfGrades) {
+			HashMap<String, Integer> listOfMarks=grade.getCriterionMarks();
 			count+=listOfMarks.size();
 			for(int i:listOfMarks.values()) {
 				System.out.println("Grade : "+ i);
@@ -239,10 +242,10 @@ public class Controller {
     	
    	// Calulates Min of all grades in rubric
 	public int getMinForRubric(Rubric rubric) {
-		List<StudentGrade> grades=rubric.getGrades();
+		List<StudentGrade> listOfGrades=rubric.getStudentGrades();
 		int min=6;
-		for(StudentGrade grade:grades) {
-			HashMap<String, Integer> marks=grade.getMarks();
+		for(StudentGrade grade:listOfGrades) {
+			HashMap<String, Integer> marks=grade.getCriterionMarks();
 			for(int i:marks.values()) {
 				if(i<min) {
 					min=i;
@@ -254,10 +257,10 @@ public class Controller {
 	
 // Calulates Max of all grades in rubric
 	public int getMaxForRubric(Rubric rubric) {
-		List<StudentGrade> grades=rubric.getGrades();
+		List<StudentGrade> listOfGrades=rubric.getStudentGrades();
 		int max=0;
-		for(StudentGrade grade:grades) {
-			HashMap<String, Integer> listOfMarks=grade.getMarks();
+		for(StudentGrade grade:listOfGrades) {
+			HashMap<String, Integer> listOfMarks=grade.getCriterionMarks();
 			for(int i: listOfMarks.values()) {
 				if(i>max) {
 					max=i;
@@ -269,12 +272,12 @@ public class Controller {
 	
 // Calulates Standard Deviation of all grades in rubric
 	public double getStandardDeviationForRubric(Rubric rubric) {
-		List<StudentGrade> grades=rubric.getGrades();
+		List<StudentGrade> grades=rubric.getStudentGrades();
 		double mean = getAverageForRubric(rubric);
 		double standardDev =0;
 		int count=0;
 		for(StudentGrade grade:grades) {
-			HashMap<String, Integer> marks=grade.getMarks();
+			HashMap<String, Integer> marks=grade.getCriterionMarks();
 			count+=marks.size();
 			for(int i:marks.values()) {
 				standardDev+= Math.pow((i-mean),2);
@@ -293,7 +296,7 @@ public class Controller {
 	
 	//All grades of rubric returned
 	public List<StudentGrade> getAllGradesOfRubric(Rubric rubric) {
-		return rubric.getGrades();
+		return rubric.getStudentGrades();
 	}
 
 
@@ -374,8 +377,54 @@ public class Controller {
 
         return allOfRubrics;
     }
-    
 
+    //This calculates average score of all criterions
+	public double getAverageForCriterion(Rubric rubric, String criterion) {
+		List<StudentGrade> grades = rubric.getStudentGrades();
+		double sum=0;
+		double count=grades.size();
+		for(StudentGrade grade:grades) {
+			sum+= grade.getScore(criterion);
+		}
+		return sum/count;
+	}
+	
+	//This calculates min score of all criterions
+
+	public int getMinForCriterion(Rubric rubric, String criterion) {
+		List<StudentGrade> grades=rubric.getStudentGrades();
+		int min=6;
+		for(StudentGrade grade:grades) {
+			if(grade.getScore(criterion) < min) {
+				min = grade.getScore(criterion);
+			}
+		}
+		return min;
+	}
+		//This calculates max score of all criterions
+	public int getMaxForCriterion(Rubric rubric, String criterion) {
+		List<StudentGrade> grades=rubric.getStudentGrades();
+		int max=0;
+		for(StudentGrade grade:grades) {
+			if(grade.getScore(criterion)>max) {
+				max=grade.getScore(criterion);
+			}
+		}
+		return max;
+	}
+	
+	//This calculates standard deviation score of all criterions
+	public double getStandardDeviationForCriterion(Rubric rubric, String criterion) {
+		List<StudentGrade> listOfGrades = rubric.getStudentGrades();
+		double mean= getAverageForCriterion(rubric,criterion);
+		double standardDev=0;
+		int count= listOfGrades.size();
+		for(StudentGrade grade:listOfGrades) {
+            standardDev+= Math.pow((grade.getScore(criterion) - mean),2);	
+		}
+		double sqd = standardDev/count;
+		return Math.sqrt(sqd);
+	}
 
     public static void main(String[] args) {
       Controller controller = new Controller();

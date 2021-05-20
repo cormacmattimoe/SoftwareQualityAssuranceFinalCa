@@ -72,7 +72,7 @@ public class Rubric {
 	}
 	
 	//Returns list of student grades
-	public List<StudentGrade> getGrades(){
+	public List<StudentGrade> getStudentGrades(){
 		return studentGrades;
 	}
 
