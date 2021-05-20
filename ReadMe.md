@@ -234,6 +234,29 @@ It has been shown to accelerate and streamline the software development process.
 
 ![Code Review](https://research.aimultiple.com/wp-content/uploads/2019/12/codereview.jpg).
 
+
+![Code Review](https://research.aimultiple.com/wp-content/uploads/2019/12/codereview.jpg).
+
+
+
+
+
+## Code Review Checklist:
+1. Adequate white space and indentation?
+2. Correct use of syntax?
+3. Access modifiers used correctly?
+4. Does the naming convention make sense and do they have meaning?
+5. Does the code make sense? Is it readable? If some code is unclear, is there a code comment to signify the function of the code?
+6. Is there associated unit tests? If not, why not?
+7. Are unit tests passing? If not, why not?
+8. Is there adequate description in the pull request title?
+9. Does one method have one specific action? Do I need to split the method into two methods?
+10. Is there any repeated code/ duplication of code?
+
+
+
+![Code Review checklist](https://i2.wp.com/d331tpl5vusgqa.cloudfront.net/wp-content/uploads/2015/08/Code-Review-Checklist.png?ssl=1).
+
 ## Pull Request
 
 A pull request is a method of submitting your work to an open project. The use of good pull requests within a team's workflow enhances the overall team productivity while minimizing frustration that can occur when an error occurs.
