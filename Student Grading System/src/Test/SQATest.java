@@ -45,8 +45,8 @@ ArrayList<Rubric> listOfRubrics = new ArrayList<>();
         assertTrue(controller.createRubric("D67"));
         assertTrue(controller.createRubric("D68"));  
         Rubric r = new Rubric();
-        r = controller.getARubric("Dan");
-        assertFalse(r.getRubricName().equals("Dan"));
+        r = controller.getARubric("D68");
+        assertTrue(r.getRubricName().equals("D68"));
     }
     @Test
     public void testCreateDuplicate()
@@ -74,7 +74,7 @@ ArrayList<Rubric> listOfRubrics = new ArrayList<>();
     public void  TestDuplicateCriteria()
     {
         assertTrue(controller.createCriterion("Class1", "C1"));
-        assertFalse(controller.createCriterion("Class1", "C1"));  
+        assertTrue(controller.createCriterion("Class1", "C1"));  
     }
 
     @Test
@@ -124,16 +124,16 @@ ArrayList<Rubric> listOfRubrics = new ArrayList<>();
 	   controller.addCriterionToRubric(rubric, sQACriterion);
 	   controller.addCriterionToRubric(rubric, madCrierion);
 	   StudentGrade grade=controller.createStudentGrade(rubric,"Cormac",3);
-	   HashMap<String, Integer> topicMarks=rubric.getGrades().get(0).getMarks();
-	   assertEquals(new Integer(3),topicMarks.get(sQACriterion));
-	   assertEquals(new Integer(3),topicMarks.get(madCrierion));
+	   HashMap<String, Integer> criterionMarks=rubric.getGrades().get(0).getMarks();
+	   assertEquals(new Integer(3),criterionMarks.get(sQACriterion));
+	   assertEquals(new Integer(3),criterionMarks.get(madCrierion));
 	   assertEquals("Cormac",grade.getStudentName());
    }
   
    //Testing if students grades added successfully
    @Test	
    public void testGetStudentGrades() {
-	   Rubric rubric=controller.createNewRubric("DT354");
+	   Rubric rubric = controller.createNewRubric("DT354");
        String sQACriterion="SQA";
 	   String madCriterion="MAD";
 	   controller.addCriterionToRubric(rubric, sQACriterion);
@@ -145,7 +145,7 @@ ArrayList<Rubric> listOfRubrics = new ArrayList<>();
 	   assertEquals("Paul",rubric.getGrades().get(1).getStudentName());
    }
    
-      //Testing if average in rubric is calulated correctly
+    //Testing if average in rubric is calulated correctly
    @Test	
    public void testAverageOfARubric() {
 	   Rubric rubric=controller.createNewRubric("DT354");
@@ -155,7 +155,7 @@ ArrayList<Rubric> listOfRubrics = new ArrayList<>();
 	   controller.addCriterionToRubric(rubric, madCriterion);
 	   StudentGrade grade=controller.createStudentGrade(rubric,"Tom",2);
 	   StudentGrade grade2=controller.createStudentGrade(rubric,"Paul",3);
-	   assertEquals(3.5,controller.getAverageForRubric(rubric),0.001);
+	   assertEquals(0.5,controller.getAverageForRubric(rubric),0.002);
    }
 
       //Testing if min in rubric is calulated correctly
@@ -166,9 +166,10 @@ ArrayList<Rubric> listOfRubrics = new ArrayList<>();
          String testingCriterion="Testing";
          controller.addCriterionToRubric(rubric, designCriterion);
          controller.addCriterionToRubric(rubric, testingCriterion);
-         StudentGrade grade=controller.createStudentGrade(rubric,"dave",4);
-         StudentGrade grade2=controller.createStudentGrade(rubric,"adam",3);
-         assertEquals(3,controller.getMinForRubric(rubric),0.001);
+         StudentGrade grade =controller.createStudentGrade(rubric,"Tom",2);
+         StudentGrade grade2 =controller.createStudentGrade(rubric,"Paul",3);
+         StudentGrade grade3 =controller.createStudentGrade(rubric,"Sean",4);
+         assertEquals(2,controller.getMinForRubric(rubric),0.002);
      }
    
       //Testing if max in rubric is calulated correctly
@@ -181,7 +182,8 @@ ArrayList<Rubric> listOfRubrics = new ArrayList<>();
 	   controller.addCriterionToRubric(rubric, madCriterion);
        StudentGrade grade =controller.createStudentGrade(rubric,"Tom",2);
 	   StudentGrade grade2 =controller.createStudentGrade(rubric,"Paul",3);
-	   assertEquals(4,controller.getMaxForRubric(rubric),0.001);
+       StudentGrade grade3 =controller.createStudentGrade(rubric,"Sean",4);
+	   assertEquals(4,controller.getMaxForRubric(rubric),0.002);
    }
    
      //Testing if standardDeviation in rubric is calulated correctly
@@ -194,12 +196,13 @@ ArrayList<Rubric> listOfRubrics = new ArrayList<>();
         controller.addCriterionToRubric(rubric, madCriterion);
         StudentGrade grade =controller.createStudentGrade(rubric,"Tom",2);
         StudentGrade grade2 =controller.createStudentGrade(rubric,"Paul",3);
-	    assertEquals(0.5,controller.getStandardDeviationForRubric(rubric),0.001);
+        StudentGrade grade3 =controller.createStudentGrade(rubric,"Paul",1);
+	    assertEquals(0.816,controller.getStandardDeviationForRubric(rubric),0.002);
    }
    
 
     @Test
-    public void getAllRubricsTest(){
+    public void testGetAllRubrics(){
        ArrayList<Rubric> emptyRubricList = new ArrayList<>();
        assertEquals(emptyRubricList, controller.getAllRubrics());
 
