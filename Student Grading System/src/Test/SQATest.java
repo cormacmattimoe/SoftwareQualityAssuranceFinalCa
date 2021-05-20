@@ -42,8 +42,8 @@ ArrayList<Rubric> listOfRubrics = new ArrayList<>();
         assertTrue(controller.createRubric("D67"));
         assertTrue(controller.createRubric("D68"));  
         Rubric r = new Rubric();
-        r = controller.getARubric("D68");
-        assertTrue(r.getRubricName().equals("D68"));
+        r = controller.getARubric("Dan");
+        assertFalse(r.getRubricName().equals("Dan"));
     }
     @Test
     public void createDuplicateTest()
@@ -98,6 +98,27 @@ ArrayList<Rubric> listOfRubrics = new ArrayList<>();
         assertTrue(controller.createCriterion("Class1", "C9"));
         assertFalse(controller.createCriterion("Class1", "C10"));  
     }
+
+
+	// 3. Test if Criterion can be added to Rubric
+	@Test
+	public void testAddingACriterionToRubric() {
+
+
+		ArrayList<String> criterion = new ArrayList<>();
+
+		criterion.add(new String("Design"));
+		criterion.add(new String("Implementation"));
+		criterion.add(new String("Testing"));
+		criterion.add(new String("Documentation"));
+
+		Rubric rubric = controller.createRubric("Software Quality Assurance"  );
+
+		ArrayList<String> criterionList = controller.addCriterionToRubric("Extra", rubric);
+
+		assertEquals("Extra", criterionList.get(criterionList.size() - 1));
+
+	}
 
     
 

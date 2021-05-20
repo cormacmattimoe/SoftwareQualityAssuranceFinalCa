@@ -2,6 +2,7 @@ package Driver;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 import Entities.Criterion;
@@ -165,7 +166,34 @@ public class Controller {
             return true;
     
         }
-// 
+       // returns Min number in ArrayList
+        public int getMin(ArrayList<Integer> listOfIntegers) {
+    
+            Collections.sort(listOfIntegers);
+    
+            return listOfIntegers.get(0);
+        }
+    
+        // returns Max number in ArrayList
+        public int getMax(ArrayList<Integer> listOfIntegers) {
+    
+            Collections.sort(listOfIntegers, Collections.reverseOrder());
+    
+            return listOfIntegers.get(0);
+        }
+
+        	//Gets a rubric
+	public Rubric getARubric(String nameOfRubric) {
+		for (Rubric rubric : listOfRubrics) {
+			if (rubric.getRubricName().equalsIgnoreCase(nameOfRubric)) {
+                System.out.println("Rubric was found " + rubric.getRubricName());  
+				return rubric;
+			}
+		}
+        System.out.println("Rubric was not found in controller class");
+		return null;
+	}
+ /*
     public Rubric getARubric(String nameOfRubric)
     {
         Rubric rubricReturned = new Rubric();
@@ -185,6 +213,7 @@ public class Controller {
         System.out.println("This is rubric returned " + rubricReturned); 
         return rubricReturned;
     }
+    */
 
 
  
@@ -251,6 +280,44 @@ public class Controller {
 				rub = rub + r;
 			}
 			double average = (Double.valueOf(total)) / (Double.valueOf(rubricList.size()));
+			return average;
+		} else
+			return 0;
+	}
+    */
+    /*
+    // Get all grades in a Rubric
+	public ArrayList<Integer> getAllGradesinRubric(Rubric rubric) {
+
+		ArrayList<StudentGrade> studentGrades = rubric.getGrades();
+		ArrayList<Integer> gradeScores = new ArrayList<Integer>();
+
+		if (studentGrades != null) {
+			for (StudentGrade studentGrade : studentGrades) {
+				for (Integer i : gradeScores))) {
+					gradeScores.add(i);
+				}
+			}
+		}
+
+		if (gradeScores.isEmpty())
+			return null;
+		else
+			return gradeScores;
+	}
+    
+
+    // Get average of Rubric
+	public double getAverageOfRubric(Rubric rubric) {
+
+		ArrayList<Integer> interList = getAllGradesinRubric(rubric);
+		int total = 0;
+
+		if (interList != null) {
+			for (int i : interList) {
+				total = total + i;
+			}
+			double average = (Double.valueOf(total)) / (Double.valueOf(interList.size()));
 			return average;
 		} else
 			return 0;
