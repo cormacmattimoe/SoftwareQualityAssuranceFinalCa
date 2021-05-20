@@ -1,8 +1,6 @@
 package Entities;
 
-
-
-
+import java.util.ArrayList;
 
 // Student is been described as having a name and list of modules 
 // related to them
@@ -11,11 +9,14 @@ public class StudentGrade {
 
     private String studentName;
     private int grade;
+    ArrayList<Criterion> criteria = new ArrayList<Criterion>();
 
     
 
     public StudentGrade() {
     }
+
+
 
     
 
@@ -41,6 +42,8 @@ public class StudentGrade {
         this.grade = grade;
     }
 
+
+		
 
 
     @Override

@@ -10,7 +10,11 @@ import java.util.ArrayList;
 public class Rubric {
 
     private String rubricName;
+
+    //Collection to represent Criterions
     private ArrayList<Criterion> criteria = new ArrayList<>();
+	//Collection to represent StudentGrades 
+	private ArrayList<StudentGrade> studentGrades = new ArrayList<StudentGrade>();
 
     public Rubric() {
     }
@@ -36,13 +40,20 @@ public class Rubric {
         this.criteria = criteria;
     }
 
+
+
     public void addCriteria(Criterion criteria) {
         this.criteria.add(criteria);
     }
+    //Method to return each studentGrades
+	public ArrayList<StudentGrade> getGrades()
+	{
+		return this.studentGrades;
+	}
 
     @Override
     public String toString() {
         return
-                "Rubric name = " + rubricName;
+                "Rubric name from rubric class = " + rubricName;
     }
 }

@@ -36,17 +36,13 @@ import Entities.StudentGrade;
 
 
 public class Controller {
-
-    public Rubric createRubric(){
-        Rubric r = new Rubric();
-        return r;
-
-    } 
-/*
     Scanner scan = new Scanner(System.in);
     ArrayList<Rubric> listOfRubrics = new ArrayList<>();
     ArrayList<Criterion> listOfCriteria = new ArrayList<>();
     ArrayList<StudentGrade> listOfGrades = new ArrayList<>();
+
+
+
  
     StudentGrade tempStudentGrade;
 
@@ -79,22 +75,36 @@ public class Controller {
             showMenu();
             break;
         case("2"):
-            System.out.println("Please enter a rubric name:");
-            String rubricReturned = scan.nextLine();
+            scan = new Scanner(System.in);
             Rubric r = new Rubric();
-            getARubric(rubricReturned,r);
-            if(r != null){
-                System.out.println("Rubric found"); 
-            }
+            System.out.println("Please enter a rubric name:");
+            String rubricWanted = scan.nextLine();
+            r = getARubric(rubricWanted);
             showMenu();
             break;
         case("3"):
             getAllRubrics();
+            showMenu();
             break;
         case("4"):
+            scan = new Scanner(System.in);
+            System.out.println("What rubric would you like?");
+            String rubicres = scan.nextLine();
+            System.out.println("What crieria would you like to add to?");
+            String cru = scan.nextLine();
+            createCriterion(cru, rubicres);
+            showMenu();
+            break;
+        case("5"):
             System.out.println("What rubric would you like?");
             String rubicre = scan.nextLine();
-           // getARubric()
+            System.out.println("What crieria would you like to add to?");
+            String c = scan.nextLine();
+            System.out.println("What is name of student?");
+            String nameOfStudent = scan.nextLine();
+            System.out.println("What is the grade of this student?");
+            int grade = scan.nextInt();
+            addStudentGrade(c, rubicre, nameOfStudent, grade);
             showMenu();
             break;
         default:
@@ -105,6 +115,7 @@ public class Controller {
     }
 
 
+
     
 
 // Create a new rubric
@@ -113,13 +124,13 @@ public class Controller {
         Rubric tempRubric = new Rubric();
         for (Rubric r : listOfRubrics)
         {
-            if(r.getRubricName() == rubricTobeCreated)
+            System.out.println("Rubric name = " + r.getRubricName());
+            if(r.getRubricName().equals(rubricTobeCreated))
             {
-            System.out.println("Failed");
-            return false;
+                System.out.println("Failed");
+                return false;
             }
         }
-        
         tempRubric.setRubricName(rubricTobeCreated);
         listOfRubrics.add(tempRubric);
         return true;
@@ -127,22 +138,22 @@ public class Controller {
         }
 
         //Create a criterion to a rubric 
-        public Boolean createCriterion(String criterionToBeCreated, Rubric rubricname)
-
+        public Boolean createCriterion(String criterionToBeCreated, String rubricname)
         {
             Criterion tempCriteria = new Criterion();
             //1. Check to see if the there is already 10 criteria
-            //2. Check to see iof the name exists
+            //2. Check to see if the name exists
             //3. Else add it
-            if(rubricname.getCriteria().size() > 9)
+            Rubric r = getARubric(rubricname);
+            if(r.getCriteria().size() > 9)
             {
-                System.out.println("To many criteria already exist");
+                System.out.println("Too many criteria already exist");
                 return false;
             }
-            listOfCriteria = rubricname.getCriteria();
+            listOfCriteria = r.getCriteria();
             for (Criterion c : listOfCriteria)
             {
-                if(c.getCriteriaName() == criterionToBeCreated)
+                if(c.getCriteriaName().equals(criterionToBeCreated))
                 {
                 System.out.println("Name already exists");
                 return false;
@@ -150,29 +161,36 @@ public class Controller {
     
             }
             tempCriteria.setCriteriaName(criterionToBeCreated);
-            rubricname.addCriteria(tempCriteria);
+            r.addCriteria(tempCriteria);
             return true;
     
         }
 // 
-    public void getARubric(String nameOfRubric, Rubric rubricReturned)
+    public Rubric getARubric(String nameOfRubric)
     {
-        rubricReturned = null;
+        Rubric rubricReturned = new Rubric();
     
         for (Rubric r : listOfRubrics)
         {
-            if(r.getRubricName() == nameOfRubric)
+            if(r.getRubricName().equals(nameOfRubric))
             {
-            rubricReturned = r;
+                System.out.println("Rubric was found " + r.getRubricName());    
+                rubricReturned = r;
             }  
         }
-
+        if(rubricReturned.equals(null))
+        {
+            System.out.println("Rubric not found "); 
+        }
+        System.out.println("This is rubric returned " + rubricReturned); 
+        return rubricReturned;
     }
+
 
  
 
 
-    public Boolean addStudentGrade(Criterion criteria, Rubric rubricname, String nameOfStudent,int gradeOfStudent)
+    public Boolean addStudentGrade(String criteriaName, String rubricName, String nameOfStudent,int gradeOfStudent)
     {
         StudentGrade tempStudentGrade = new StudentGrade();
         //1. Check to see if the rubric exists
@@ -188,13 +206,13 @@ public class Controller {
         }
         for (Rubric r : listOfRubrics)
         {
-            if(r.getRubricName() == rubricname.getRubricName())
+            if(r.getRubricName().equals(rubricName))
             {
-                listOfCriteria = rubricname.getCriteria();
+                listOfCriteria = r.getCriteria();
 
                 for (Criterion c : listOfCriteria)
                 {
-                    if(c.getCriteriaName() == criteria.getCriteriaName())
+                    if(c.getCriteriaName().equals(criteriaName))
                     {
                         tempStudentGrade.setStudentName(nameOfStudent);
                         tempStudentGrade.setGrade(gradeOfStudent);
@@ -243,7 +261,7 @@ public class Controller {
 
     public static void main(String[] args) {
       Controller controller = new Controller();
-     // controller.showMenu();
+      controller.showMenu();
 
     }
 }
