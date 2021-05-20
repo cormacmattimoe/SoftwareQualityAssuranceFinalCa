@@ -3,6 +3,8 @@ package Driver;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
 import Entities.Criterion;
@@ -117,7 +119,17 @@ public class Controller {
 
 
 
-    
+    //Add a criterion to a rubric
+	public void addCriterionToRubric(Rubric rubric, String criterionInputted) {
+		rubric.addCriterion(criterionInputted);
+	}
+
+	//Create a new rubric and adding it to the list of Rubrics
+	public Rubric createNewRubric(String name) {
+		Rubric rubric=new Rubric(name);
+		listOfRubrics.add(rubric);
+		return rubric;
+	}	
 
 // Create a new rubric
     public Boolean createRubric(String rubricTobeCreated){
@@ -193,6 +205,99 @@ public class Controller {
         System.out.println("Rubric was not found in controller class");
 		return null;
 	}
+
+    //Creates student grade and adds score to each crierion in rubric
+	public StudentGrade createStudentGrade(Rubric rubric, String name, int score) {
+		StudentGrade grade = new StudentGrade();
+		//for criterion in rubric
+		List<String> criteria=rubric.getCriteriasString();
+		for(String criterion:criteria) {
+			//add mark to grade
+			grade.addMark(criterion,score);
+		}		
+		//add grade to rubric
+		rubric.addStudentGrade(grade);
+		
+		return grade;
+	}
+	
+	// Calulates average of all grades in rubric
+	public double getAverageForRubric(Rubric rubric) {
+		List<StudentGrade> grades=rubric.getGrades();
+		double sum=0;
+		double count=0;
+		for(StudentGrade grade:grades) {
+			HashMap<String, Integer> listOfMarks=grade.getMarks();
+			count+=listOfMarks.size();
+			for(int i:listOfMarks.values()) {
+				System.out.println("Grade : "+ i);
+				sum+=i;
+			}
+		}
+		return sum/count;
+	}
+    	
+   	// Calulates Min of all grades in rubric
+	public int getMinForRubric(Rubric rubric) {
+		List<StudentGrade> grades=rubric.getGrades();
+		int min=6;
+		for(StudentGrade grade:grades) {
+			HashMap<String, Integer> marks=grade.getMarks();
+			for(int i:marks.values()) {
+				if(i<min) {
+					min=i;
+				}
+			}
+		}
+		return min;
+	}
+	
+// Calulates Max of all grades in rubric
+	public int getMaxForRubric(Rubric rubric) {
+		List<StudentGrade> grades=rubric.getGrades();
+		int max=0;
+		for(StudentGrade grade:grades) {
+			HashMap<String, Integer> listOfMarks=grade.getMarks();
+			for(int i: listOfMarks.values()) {
+				if(i>max) {
+					max=i;
+				}
+			}
+		}
+		return max;
+	}
+	
+// Calulates Standard Deviation of all grades in rubric
+	public double getStandardDeviationForRubric(Rubric rubric) {
+		List<StudentGrade> grades=rubric.getGrades();
+		double mean = getAverageForRubric(rubric);
+		double standardDev =0;
+		int count=0;
+		for(StudentGrade grade:grades) {
+			HashMap<String, Integer> marks=grade.getMarks();
+			count+=marks.size();
+			for(int i:marks.values()) {
+				standardDev+= Math.pow((i-mean),2);
+			}
+		}
+		double sq=standardDev/count;
+		return Math.sqrt(sq);
+	}
+	
+
+	// Add Mark for specific Criteria to a grade
+	public void addMark(StudentGrade grade, String designCriterion, int score) {
+
+		grade.addMark(designCriterion, score);
+	}
+	
+	//All grades of rubric returned
+	public List<StudentGrade> getAllGradesOfRubric(Rubric rubric) {
+		return rubric.getGrades();
+	}
+
+
+
  /*
     public Rubric getARubric(String nameOfRubric)
     {
@@ -269,61 +374,7 @@ public class Controller {
 
         return allOfRubrics;
     }
-     	// Get average of Rubric
-/*	public double getAverageOfRubric(Rubric rubric) {
-
-		ArrayList<Rubric> rubricList = getAllRubrics();
-		Rubric rub = null;
-
-		if (rubricList != null) {
-			for (Rubric r : rubricList) {
-				rub = rub + r;
-			}
-			double average = (Double.valueOf(total)) / (Double.valueOf(rubricList.size()));
-			return average;
-		} else
-			return 0;
-	}
-    */
-    /*
-    // Get all grades in a Rubric
-	public ArrayList<Integer> getAllGradesinRubric(Rubric rubric) {
-
-		ArrayList<StudentGrade> studentGrades = rubric.getGrades();
-		ArrayList<Integer> gradeScores = new ArrayList<Integer>();
-
-		if (studentGrades != null) {
-			for (StudentGrade studentGrade : studentGrades) {
-				for (Integer i : gradeScores))) {
-					gradeScores.add(i);
-				}
-			}
-		}
-
-		if (gradeScores.isEmpty())
-			return null;
-		else
-			return gradeScores;
-	}
     
-
-    // Get average of Rubric
-	public double getAverageOfRubric(Rubric rubric) {
-
-		ArrayList<Integer> interList = getAllGradesinRubric(rubric);
-		int total = 0;
-
-		if (interList != null) {
-			for (int i : interList) {
-				total = total + i;
-			}
-			double average = (Double.valueOf(total)) / (Double.valueOf(interList.size()));
-			return average;
-		} else
-			return 0;
-	}
-    */
-
 
 
     public static void main(String[] args) {

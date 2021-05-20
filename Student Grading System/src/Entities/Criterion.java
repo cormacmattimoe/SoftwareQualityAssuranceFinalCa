@@ -56,6 +56,6 @@ public class Criterion {
     public String toString() {
         return
                 "Critertion name ='" + criteriaName + '\''
-                 + ", Score=" + studentGrades;
+                 + ", Student grades =" + studentGrades;
     }
 }

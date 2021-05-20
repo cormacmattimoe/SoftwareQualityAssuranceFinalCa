@@ -4,6 +4,8 @@ package Entities;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 // Rubric is been described as having a student name 
 // with an list of different criterias
@@ -13,11 +15,16 @@ public class Rubric {
 
     //Collection to represent Criterions
     private ArrayList<Criterion> criteria = new ArrayList<>();
+	List<String> criteriaList=new ArrayList<String>();
 	//Collection to represent StudentGrades 
 	private ArrayList<StudentGrade> studentGrades = new ArrayList<StudentGrade>();
 
     public Rubric() {
     }
+
+	public Rubric(String name) {
+		this.rubricName = name;
+	}
 
     public Rubric(String rubricName, ArrayList<Criterion> criteria) {
         this.rubricName = rubricName;
@@ -40,16 +47,36 @@ public class Rubric {
         this.criteria = criteria;
     }
 
+	//Add a criterion to a rubric
+	public void addCriterion(String criterion) {
+		if(criteria.size()<10) {
+		criteriaList.add(criterion);
+		}else {
+			System.out.println("The rubric is full");
+		}
+	}
 
 
     public void addCriteria(Criterion criteria) {
         this.criteria.add(criteria);
     }
-    //Method to return each studentGrades
-	public ArrayList<StudentGrade> getGrades()
-	{
-		return this.studentGrades;
+
+	//This returns a list of criterias in a list
+	public List<String> getCriteriasString() {
+		return criteriaList;
 	}
+
+
+	public void addStudentGrade(StudentGrade grade) {
+		studentGrades.add(grade);
+	}
+	
+	//Returns list of student grades
+	public List<StudentGrade> getGrades(){
+		return studentGrades;
+	}
+
+
 
     @Override
     public String toString() {
