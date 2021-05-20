@@ -40,7 +40,7 @@ import Entities.StudentGrade;
 
 public class Controller {
     Scanner scan = new Scanner(System.in);
-    public ArrayList<Rubric> listOfRubrics = new ArrayList<>();
+    ArrayList<Rubric> listOfRubrics = new ArrayList<>();
     ArrayList<Criterion> listOfCriteria = new ArrayList<>();
     ArrayList<StudentGrade> listOfGrades = new ArrayList<>();
 
@@ -125,14 +125,14 @@ public class Controller {
 	}
 
 	//Create a new rubric and adding it to the list of Rubrics
-	private Rubric createNewRubric(String name) {
+	public Rubric createNewRubric(String name) {
 		Rubric rubric=new Rubric(name);
 		listOfRubrics.add(rubric);
 		return rubric;
 	}	
 
 // Create a new rubric
-    public Rubric createRubric(String rubricTobeCreated){
+    private Boolean createRubric(String rubricTobeCreated){
         //1. Check to see if the rubric name exists
         for (Rubric r : listOfRubrics)
         {
@@ -140,11 +140,13 @@ public class Controller {
             if(r.getRubricName().equals(rubricTobeCreated))
             {
                 System.out.println("Failed");
-                return null;
-        
+                return false;
             }
         }
-          return createNewRubric(rubricTobeCreated);
+        createNewRubric(rubricTobeCreated);
+        listOfRubrics.add(tempRubric);
+        return true;
+
         }
         
 
@@ -160,7 +162,7 @@ public class Controller {
             if(r.getCriteria().size() > 9)
             {
                 System.out.println("Too many criteria already exist");
-                throw new IllegalArgumentException("Too many criterion exist");
+                return false;
             }
             listOfCriteria = r.getCriteria();
             for (Criterion c : listOfCriteria)
@@ -196,20 +198,25 @@ public class Controller {
 
         	//Gets a rubric
 	public Rubric getARubric(String nameOfRubric) {
-        Rubric rubricFound = null;
 		for (Rubric rubric : listOfRubrics) {
 			if (rubric.getRubricName().equalsIgnoreCase(nameOfRubric)) {
                 System.out.println("Rubric was found " + rubric.getRubricName());  
-				rubricFound = rubric;
+				return rubric;
 			}
 		}
-        if(rubricFound == null) {
-            System.out.println("Rubric was not found in controller class");
-			throw new NullPointerException();
-		}
-        return rubricFound;
+        System.out.println("Rubric was not found in controller class");
+		return null;
 	}
-
+/*
+    //Creates student grade and add score to each criterion in rubric
+	public StudentGrade addStudentGradeToCriterion(Rubric rubric, Criterion criterion, String studentName, int score) {
+		StudentGrade studentGrade = new StudentGrade();
+		studentGrade.setGrade(score);
+        studentGrade.setStudentName(studentName);	
+        criterion.addStudentGrade(studentGrade);	
+		return studentGrade;
+	}
+    */
 
     //Creates student grade and adds score to each crierion in rubric
 	public StudentGrade addStudentGradeToCriterion(Rubric rubric,  String name, int score) {

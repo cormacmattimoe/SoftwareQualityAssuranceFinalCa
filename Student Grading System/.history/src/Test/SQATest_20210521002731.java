@@ -252,12 +252,11 @@ Controller controller = new Controller();
 	assertEquals(2,controller.getMinForCriterion(rubric,sQACriterion),0.01);
    }
      
-   //Testing get rubric by name when it doesnt exist
+   //TESTS GETTTING RUBRIC BY NAME THAT DOESNT EXIST
    @Test(expected = NullPointerException.class)	
-   public void testRubricDoesNotExist() {
-	   Rubric rubric=controller.createRubric("DT354");
-	   Rubric rubric2=controller.getARubric("DT366");
-    
+   public void testRubricNotFound() {
+	   Rubric rubric=controller.createRubric("Construction");
+	   Rubric rubric2=controller.getRubricByName("Business");
    }
 
      //Testing on exception thrown when defining a grade

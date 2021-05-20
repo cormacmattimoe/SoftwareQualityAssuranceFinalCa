@@ -35,11 +35,11 @@ Controller controller = new Controller();
     @Test
     public void testViewARubric()
     {
-        controller.createRubric("Rubric1");
-        controller.createRubric("Class2");
-        controller.createRubric("Class3");
-        controller.createRubric("D67");
-        controller.createRubric("D68");  
+        assertTrue(controller.createRubric("Rubric1"));
+        assertTrue(controller.createRubric("Class2"));
+        assertTrue(controller.createRubric("Class3"));
+        assertTrue(controller.createRubric("D67"));
+        assertTrue(controller.createRubric("D68"));  
         Rubric r = new Rubric();
         r = controller.getARubric("D68");
         assertTrue(r.getRubricName().equals("D68"));
@@ -67,7 +67,7 @@ Controller controller = new Controller();
     }
 
     @Test
-    public void testDuplicateCriteria()
+    public void  testDuplicateCriteria()
 
     {
         Rubric rubric = controller.createRubric("DT354");
@@ -75,6 +75,34 @@ Controller controller = new Controller();
         controller.addCriterionToRubric(rubric, "C1");
         assertTrue(controller.listOfRubrics.size()==1);
     }
+     
+    @Test
+    public void testCriterionMoreThan9()
+    {
+        Rubric rubric = controller.createRubric("DT354");
+        String sQACriterion="SQA";
+        String madCrierion="MAD";
+        String spCriterion="SP";
+        String smCriterion="Sm";
+        String sisCriterion="SIS";
+        String fypCriterion="FYP";
+        String slCriterion="SL";
+        String daCriterion="DA";
+        String soCriterion="SO";
+        String gaCriterion="GA";
+        controller.addCriterionToRubric(rubric, sQACriterion);
+        controller.addCriterionToRubric(rubric, madCrierion);
+        controller.addCriterionToRubric(rubric, spCriterion);
+        controller.addCriterionToRubric(rubric, smCriterion);
+        controller.addCriterionToRubric(rubric, sisCriterion);
+        controller.addCriterionToRubric(rubric, fypCriterion);
+        controller.addCriterionToRubric(rubric, slCriterion);
+        controller.addCriterionToRubric(rubric, daCriterion);
+        controller.addCriterionToRubric(rubric, soCriterion);
+        controller.addCriterionToRubric(rubric, gaCriterion);
+        assertFalse(controller.addCriterionToRubric("Class1", "C10"));  
+    }
+
         // Test for adding criterion to rubric
    @Test	
    public void testAddCriterionToARubric() {
@@ -251,22 +279,6 @@ Controller controller = new Controller();
 	StudentGrade grade4 =controller.addStudentGradeToCriterion(rubric,"Conor",5);
 	assertEquals(2,controller.getMinForCriterion(rubric,sQACriterion),0.01);
    }
-     
-   //Testing get rubric by name when it doesnt exist
-   @Test(expected = NullPointerException.class)	
-   public void testRubricDoesNotExist() {
-	   Rubric rubric=controller.createRubric("DT354");
-	   Rubric rubric2=controller.getARubric("DT366");
-    
-   }
-
-     //Testing on exception thrown when defining a grade
-     @Test(expected = IllegalArgumentException.class)	
-     public void invalidGrade() {
-        String sQACriterion="SQA";
-         StudentGrade grade=new StudentGrade("Tom");
-         grade.addMark(sQACriterion,15);
-     }
    
 
    
@@ -286,22 +298,7 @@ Controller controller = new Controller();
     assertEquals(2.0,controller.getMinForCriterion(rubric,sQACriterion),0.01);
    }
    
-    // Testing max numbers of crierions
-    @Test	
-    public void testMaxCriterionsInRubric() {
-        Rubric rubric = controller.createRubric("DT354");
-        String sQACriterion="SQA";
-        for(int i=0;i<10;i++)
-        {
-        controller.addCriterionToRubric(rubric, sQACriterion);
-        }
-        assertEquals(10,rubric.getCriteriasString().size());
-        controller.addCriterionToRubric(rubric, sQACriterion);
-        controller.addCriterionToRubric(rubric, sQACriterion);
-        controller.addCriterionToRubric(rubric, sQACriterion);
-        controller.addCriterionToRubric(rubric, sQACriterion);
-        assertEquals(14,rubric.getCriteriasString().size());
-    }
+
     @Test
     public void testGetAllRubrics(){
        ArrayList<Rubric> emptyRubricList = new ArrayList<>();
@@ -313,7 +310,7 @@ Controller controller = new Controller();
        StudentGrade grade1 =controller.addStudentGradeToCriterion(rubric,"Tom",2);
        StudentGrade grade2 =controller.addStudentGradeToCriterion(rubric,"Paul",3);
        StudentGrade grade3 =controller.addStudentGradeToCriterion(rubric,"Sean",4);
-       assertEquals(emptyRubricList, controller.getAllRubrics());
+       assertEquals(rubric, controller.getAllRubrics());
 
     }
 

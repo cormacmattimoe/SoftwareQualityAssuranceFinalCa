@@ -251,22 +251,6 @@ Controller controller = new Controller();
 	StudentGrade grade4 =controller.addStudentGradeToCriterion(rubric,"Conor",5);
 	assertEquals(2,controller.getMinForCriterion(rubric,sQACriterion),0.01);
    }
-     
-   //Testing get rubric by name when it doesnt exist
-   @Test(expected = NullPointerException.class)	
-   public void testRubricDoesNotExist() {
-	   Rubric rubric=controller.createRubric("DT354");
-	   Rubric rubric2=controller.getARubric("DT366");
-    
-   }
-
-     //Testing on exception thrown when defining a grade
-     @Test(expected = IllegalArgumentException.class)	
-     public void invalidGrade() {
-        String sQACriterion="SQA";
-         StudentGrade grade=new StudentGrade("Tom");
-         grade.addMark(sQACriterion,15);
-     }
    
 
    
@@ -300,7 +284,7 @@ Controller controller = new Controller();
         controller.addCriterionToRubric(rubric, sQACriterion);
         controller.addCriterionToRubric(rubric, sQACriterion);
         controller.addCriterionToRubric(rubric, sQACriterion);
-        assertEquals(14,rubric.getCriteriasString().size());
+        assertEquals(11,rubric.getCriteriasString().size());
     }
     @Test
     public void testGetAllRubrics(){

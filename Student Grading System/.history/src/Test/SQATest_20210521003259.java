@@ -257,7 +257,6 @@ Controller controller = new Controller();
    public void testRubricDoesNotExist() {
 	   Rubric rubric=controller.createRubric("DT354");
 	   Rubric rubric2=controller.getARubric("DT366");
-    
    }
 
      //Testing on exception thrown when defining a grade

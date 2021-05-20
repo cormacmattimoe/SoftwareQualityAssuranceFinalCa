@@ -209,7 +209,16 @@ public class Controller {
 		}
         return rubricFound;
 	}
-
+/*
+    //Creates student grade and add score to each criterion in rubric
+	public StudentGrade addStudentGradeToCriterion(Rubric rubric, Criterion criterion, String studentName, int score) {
+		StudentGrade studentGrade = new StudentGrade();
+		studentGrade.setGrade(score);
+        studentGrade.setStudentName(studentName);	
+        criterion.addStudentGrade(studentGrade);	
+		return studentGrade;
+	}
+    */
 
     //Creates student grade and adds score to each crierion in rubric
 	public StudentGrade addStudentGradeToCriterion(Rubric rubric,  String name, int score) {

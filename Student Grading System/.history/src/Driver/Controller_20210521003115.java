@@ -200,16 +200,24 @@ public class Controller {
 		for (Rubric rubric : listOfRubrics) {
 			if (rubric.getRubricName().equalsIgnoreCase(nameOfRubric)) {
                 System.out.println("Rubric was found " + rubric.getRubricName());  
-				rubricFound = rubric;
+				return rubric;
 			}
 		}
-        if(rubricFound == null) {
-            System.out.println("Rubric was not found in controller class");
+        if(rubricFound==null) {
 			throw new NullPointerException();
+            System.out.println("Rubric was not found in controller class");
 		}
-        return rubricFound;
 	}
-
+/*
+    //Creates student grade and add score to each criterion in rubric
+	public StudentGrade addStudentGradeToCriterion(Rubric rubric, Criterion criterion, String studentName, int score) {
+		StudentGrade studentGrade = new StudentGrade();
+		studentGrade.setGrade(score);
+        studentGrade.setStudentName(studentName);	
+        criterion.addStudentGrade(studentGrade);	
+		return studentGrade;
+	}
+    */
 
     //Creates student grade and adds score to each crierion in rubric
 	public StudentGrade addStudentGradeToCriterion(Rubric rubric,  String name, int score) {

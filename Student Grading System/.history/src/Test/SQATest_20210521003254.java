@@ -254,10 +254,9 @@ Controller controller = new Controller();
      
    //Testing get rubric by name when it doesnt exist
    @Test(expected = NullPointerException.class)	
-   public void testRubricDoesNotExist() {
+   public void testRubric() {
 	   Rubric rubric=controller.createRubric("DT354");
 	   Rubric rubric2=controller.getARubric("DT366");
-    
    }
 
      //Testing on exception thrown when defining a grade

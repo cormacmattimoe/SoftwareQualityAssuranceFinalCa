@@ -23,72 +23,97 @@ public class SQATest {
 
 //    testing first commit to test suite
 Controller controller = new Controller();
+ArrayList<Rubric> listOfRubrics = new ArrayList<>();
  
 
-@Test
+    @Test
     public void testCreatingRubric()
     {
-        Rubric rubric = controller.createRubric("Rubric1");
-        assertTrue(controller.listOfRubrics.contains(rubric));
+        controller.createRubric("Rubric1");   
+        assertTrue(listOfRubrics.stream().map(Rubric::getRubricName)
+        .filter("Rubric1" :: equals).findFirst().isPresent(x=>x.getRubricName == "Rubric1"); 
     }
     
     @Test
     public void testViewARubric()
     {
-        controller.createRubric("Rubric1");
-        controller.createRubric("Class2");
-        controller.createRubric("Class3");
-        controller.createRubric("D67");
-        controller.createRubric("D68");  
+        assertTrue(controller.createRubric("Class1"));
+        assertTrue(controller.createRubric("Class2"));
+        assertTrue(controller.createRubric("Class3"));
+        assertTrue(controller.createRubric("D67"));
+        assertTrue(controller.createRubric("D68"));  
         Rubric r = new Rubric();
         r = controller.getARubric("D68");
         assertTrue(r.getRubricName().equals("D68"));
     }
     @Test
-    public void testCreatingDuplicateRubric()
+    public void testCreateDuplicate()
     {
-        controller.createRubric("Rubric1");
-        controller.createRubric("Rubric1");
-        assertTrue(controller.listOfRubrics.size()==1);
+        assertTrue(controller.createRubric("Paul"));
+        assertFalse(controller.createRubric("Paul"));
+        assertFalse(controller.createRubric("Paul"));
     }
+
     @Test
     public void testCreateCriterion()
     {
-        Rubric rubric = controller.createRubric("DT354");
-        controller.addCriterionToRubric(rubric,"C0");
-        controller.addCriterionToRubric(rubric, "C1");
-        controller.addCriterionToRubric(rubric, "C2");
-        controller.addCriterionToRubric(rubric, "C3");
-        controller.addCriterionToRubric(rubric, "C4");
-        controller.addCriterionToRubric(rubric, "C5");
-        controller.addCriterionToRubric(rubric, "C6");
-        controller.addCriterionToRubric(rubric, "C7");
+        assertTrue(controller.createRubric("Class1"));
+        assertTrue(controller.createCriterion("Class1", "C1"));
+        assertTrue(controller.createCriterion("Class1", "C2"));
+        assertTrue(controller.createCriterion("Class1", "C3"));
+        assertTrue(controller.createCriterion("Class1", "C4"));
+        assertTrue(controller.createCriterion("Class1", "C5"));
+        assertTrue(controller.createCriterion("Class1", "C6"));
+        assertTrue(controller.createCriterion("Class1", "C7"));
        
     }
 
     @Test
-    public void testDuplicateCriteria()
+    public void  testDuplicateCriteria()
 
     {
-        Rubric rubric = controller.createRubric("DT354");
-        controller.addCriterionToRubric(rubric, "C1");
-        controller.addCriterionToRubric(rubric, "C1");
-        assertTrue(controller.listOfRubrics.size()==1);
+        Rubric rubric = controller.createNewRubric("DT354");
+        controller.createCriterion("Class", "C1");
+        controller.createCriterion("Class1", "C1");
+        assertTrue(  
     }
-        // Test for adding criterion to rubric
-   @Test	
-   public void testAddCriterionToARubric() {
-	   Rubric rubric=controller.createRubric("DT354");
-	   String sQACriterion ="SQA";
-	   controller.addCriterionToRubric(rubric, sQACriterion);
-	   assertEquals("SQA",rubric.getCriteriasString().get(0));
-   }
+
+   
+
+
+     
+    @Test
+    public void TestCriterionMoreThan9()
+    {
+        Rubric rubric = controller.createNewRubric("DT354");
+        String sQACriterion="SQA";
+        String madCrierion="MAD";
+        String spCriterion="SP";
+        String smCriterion="Sm";
+        String sisCriterion="SIS";
+        String fypCriterion="FYP";
+        String slCriterion="SL";
+        String daCriterion="DA";
+        String soCriterion="SO";
+        String gaCriterion="GA";
+        controller.addCriterionToRubric(rubric, sQACriterion);
+        controller.addCriterionToRubric(rubric, madCrierion);
+        controller.addCriterionToRubric(rubric, spCriterion);
+        controller.addCriterionToRubric(rubric, smCriterion);
+        controller.addCriterionToRubric(rubric, sisCriterion);
+        controller.addCriterionToRubric(rubric, fypCriterion);
+        controller.addCriterionToRubric(rubric, slCriterion);
+        controller.addCriterionToRubric(rubric, daCriterion);
+        controller.addCriterionToRubric(rubric, soCriterion);
+        controller.addCriterionToRubric(rubric, gaCriterion);
+        assertFalse(controller.createCriterion("Class1", "C10"));  
+    }
 
 
     // Test for creating a student grade in a rubric
    @Test	
    public void testCreateStudentGrade() {
-	   Rubric rubric = controller.createRubric("DT354");
+	   Rubric rubric = controller.createNewRubric("DT354");
 	   String sQACriterion="SQA";
 	   String madCriterion="MAD";
 	   controller.addCriterionToRubric(rubric, sQACriterion);
@@ -104,8 +129,8 @@ Controller controller = new Controller();
    //Testing if students grades added successfully
    @Test	
    public void testGetStudentGrades() {
-	   Rubric rubric = controller.createRubric("DT354");
-       Rubric rubric2 = controller.createRubric("Dan");
+	   Rubric rubric = controller.createNewRubric("DT354");
+       Rubric rubric2 = controller.createNewRubric("Dan");
 
        String sQACriterion="SQA";
 	   String madCriterion="MAD";
@@ -119,7 +144,7 @@ Controller controller = new Controller();
        stGrade.addMark(sQACriterion,1);
        gStudentGrades.addMark(sQACriterion,1);
        stGrades.addMark(sQACriterion,1);
-	   assertEquals(4,rubric.getStudentGrades().size());
+	   assertEquals(2,rubric.getStudentGrades().size());
 	   assertEquals("Tom",rubric.getStudentGrades().get(0).getStudentName());
 	   assertEquals("Paul",rubric.getStudentGrades().get(1).getStudentName());
    }
@@ -127,7 +152,7 @@ Controller controller = new Controller();
     //Testing if average in rubric is calculated correctly
    @Test	
    public void testAverageOfARubric() {
-	   Rubric rubric=controller.createRubric("DT354");
+	   Rubric rubric=controller.createNewRubric("DT354");
        String sQACriterion="SQA";
 	   String madCriterion="MAD";
 	   controller.addCriterionToRubric(rubric, sQACriterion);
@@ -141,7 +166,7 @@ Controller controller = new Controller();
       //Testing if min in rubric is calulated correctly
      @Test	
      public void testMinForARubric() {
-        Rubric rubric=controller.createRubric("DT354");
+        Rubric rubric=controller.createNewRubric("DT354");
          String sQACriterion="SQA";
          String madCriterion="MAD";
          controller.addCriterionToRubric(rubric, sQACriterion);
@@ -155,7 +180,7 @@ Controller controller = new Controller();
       //Testing if max in rubric is calulated correctly
    @Test	
    public void testMaxForARubric() {
-	   Rubric rubric=controller.createRubric("DT354");
+	   Rubric rubric=controller.createNewRubric("DT354");
        String sQACriterion="SQA";
 	   String madCriterion="MAD";
 	   controller.addCriterionToRubric(rubric, sQACriterion);
@@ -169,7 +194,7 @@ Controller controller = new Controller();
      //Testing if standardDeviation in rubric is calulated correctly
    @Test	
    public void testStandardDeviationForARubric() {
-        Rubric rubric=controller.createRubric("DT354");
+        Rubric rubric=controller.createNewRubric("DT354");
         String sQACriterion="SQA";
         String madCriterion="MAD";
         controller.addCriterionToRubric(rubric, sQACriterion);
@@ -184,7 +209,7 @@ Controller controller = new Controller();
     //Testing if average in criterion is calulated correctly
    @Test	
    public void testAverageForCriterion() {
-    Rubric rubric=controller.createRubric("DT354");
+    Rubric rubric=controller.createNewRubric("DT354");
     String sQACriterion="SQA";
     String madCriterion="MAD";
     controller.addCriterionToRubric(rubric, sQACriterion);
@@ -204,7 +229,7 @@ Controller controller = new Controller();
        //Testing if min in criterion is calulated correctly
        @Test	
        public void testStudentGradeRule() {
-           Rubric rubric=controller.createRubric("DT354");
+           Rubric rubric=controller.createNewRubric("DT354");
            String sQACriterion="SQA";
            String madCriterion="MAD";
            controller.addCriterionToRubric(rubric, sQACriterion);
@@ -222,7 +247,7 @@ Controller controller = new Controller();
     //Testing if min in criterion is calulated correctly
       @Test	
     public void testMinForCriterion() {
-        Rubric rubric=controller.createRubric("DT354");
+        Rubric rubric=controller.createNewRubric("DT354");
         String sQACriterion="SQA";
         String madCriterion="MAD";
         controller.addCriterionToRubric(rubric, sQACriterion);
@@ -239,7 +264,7 @@ Controller controller = new Controller();
     //Testing if Min in criterion is calulated correctly
    @Test	
    public void testMaxForCriterion() {
-    Rubric rubric=controller.createRubric("DT354");
+    Rubric rubric=controller.createNewRubric("DT354");
     String sQACriterion="SQA";
     String madCriterion="MAD";
     controller.addCriterionToRubric(rubric, sQACriterion);
@@ -251,29 +276,13 @@ Controller controller = new Controller();
 	StudentGrade grade4 =controller.addStudentGradeToCriterion(rubric,"Conor",5);
 	assertEquals(2,controller.getMinForCriterion(rubric,sQACriterion),0.01);
    }
-     
-   //Testing get rubric by name when it doesnt exist
-   @Test(expected = NullPointerException.class)	
-   public void testRubricDoesNotExist() {
-	   Rubric rubric=controller.createRubric("DT354");
-	   Rubric rubric2=controller.getARubric("DT366");
-    
-   }
-
-     //Testing on exception thrown when defining a grade
-     @Test(expected = IllegalArgumentException.class)	
-     public void invalidGrade() {
-        String sQACriterion="SQA";
-         StudentGrade grade=new StudentGrade("Tom");
-         grade.addMark(sQACriterion,15);
-     }
    
 
    
     //Testing if Standard deviation in criterion is calulated correctly
    @Test	
    public void testStandardDeviationForCriterion() {
-    Rubric rubric=controller.createRubric("DT354");
+    Rubric rubric=controller.createNewRubric("DT354");
     String sQACriterion="SQA";
     String madCriterion="MAD";
     controller.addCriterionToRubric(rubric, sQACriterion);
@@ -286,26 +295,11 @@ Controller controller = new Controller();
     assertEquals(2.0,controller.getMinForCriterion(rubric,sQACriterion),0.01);
    }
    
-    // Testing max numbers of crierions
-    @Test	
-    public void testMaxCriterionsInRubric() {
-        Rubric rubric = controller.createRubric("DT354");
-        String sQACriterion="SQA";
-        for(int i=0;i<10;i++)
-        {
-        controller.addCriterionToRubric(rubric, sQACriterion);
-        }
-        assertEquals(10,rubric.getCriteriasString().size());
-        controller.addCriterionToRubric(rubric, sQACriterion);
-        controller.addCriterionToRubric(rubric, sQACriterion);
-        controller.addCriterionToRubric(rubric, sQACriterion);
-        controller.addCriterionToRubric(rubric, sQACriterion);
-        assertEquals(14,rubric.getCriteriasString().size());
-    }
+
     @Test
     public void testGetAllRubrics(){
        ArrayList<Rubric> emptyRubricList = new ArrayList<>();
-       Rubric rubric=controller.createRubric("DT354");
+       Rubric rubric=controller.createNewRubric("DT354");
        String sQACriterion="SQA";
        String madCriterion="MAD";
        controller.addCriterionToRubric(rubric, sQACriterion);
@@ -313,7 +307,7 @@ Controller controller = new Controller();
        StudentGrade grade1 =controller.addStudentGradeToCriterion(rubric,"Tom",2);
        StudentGrade grade2 =controller.addStudentGradeToCriterion(rubric,"Paul",3);
        StudentGrade grade3 =controller.addStudentGradeToCriterion(rubric,"Sean",4);
-       assertEquals(emptyRubricList, controller.getAllRubrics());
+       assertEquals(rubric, controller.getAllRubrics());
 
     }
 
