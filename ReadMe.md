@@ -286,9 +286,10 @@ In the instance of the project, I will cover three questions:
 
 * Unit testing - create more unit tests to expand the application even further.
 
+ 
  ### What I would do differently?
 
-* Created more pull requests to notify me to go back and change problems. This would be ve
+* Created more pull requests to notify me to go back and change problems. This would be very important wheh working as a team and review eachothers code.
 
 
 
