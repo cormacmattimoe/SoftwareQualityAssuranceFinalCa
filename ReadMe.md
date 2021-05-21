@@ -169,3 +169,35 @@ The features include:
     - If you click on the result it will navigate you to the Test Report. 
 -   When a test case fails, the user is given a rundown of the mistake, which aids in identifying the problem's root cause.
 
+
+ # Retrospective
+
+**Retrospectives** are meetings held at the end of each Sprint where team members collectively analyze how things went in order to improve the process for the next Sprint.
+In the instance of the project, I will cover three questions:
+
+ 1. What went well in the project?
+ 2. What could be improved
+ 3. What I would do differently?
+
+ ### What went well?
+
+ * My Sprint backlog and task estimations at the beginning of the project definitely helped me remain on schedule and gave me a better knowledge of the approaches used in industry to calculate task estimates.
+ * I have gained a greater understanding of Test Driven Development and how important it is when coding.
+ * In addition, I gained a deeper grasp of pull requests and their importance in Software Quality Assurance.
+
+### What could be improved?
+
+* Time management - I felt I spent too much time trying to get different features to work instead of completing others and returning back to the feature, so could definitely improve this part.
+
+* Unit testing - create more unit tests to expand the application even further.
+
+ ### What I would do differently?
+
+* Created more pull requests to notify me to go back and change problems. This would be very important wheh working as a team and review eachothers code.
+
+
+
+
+
+
+
