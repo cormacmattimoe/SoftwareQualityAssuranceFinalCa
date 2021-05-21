@@ -179,14 +179,13 @@ The features include:
 
  </br>
 
- ![](Screenshot 2021-05-21 at 00.53.09.png)  </br>
 
 
  ## Run 2
  This the result I got on run 2 when I refactor my code and it displayed a full report below:
  All tests passed.
    
- ![](Screenshot 2021-05-21 at 00.53.09.png)  </br>
+ ![](https://github.com/cormacmattimoe/SoftwareQualityAssuranceFinalCa/blob/506fe8d0ea346bc2555b5b2c1a2a5eb206804919/Screenshot%202021-05-21%20at%2000.53.09.png)  </br>
 
 
  </br></br>
