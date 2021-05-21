@@ -171,6 +171,28 @@ The features include:
 
 
 
+ ##  Run  1
+ ![](Screenshot 2021-05-21 at 14.09.36.png) </br> 
+ As you can see from the screenshot it highlights:
+ A full report on the tests that pass and the tests that fail. 
+ You can see that 12 passed and 6 failed meaning that I needed get all tests to pass successfully.
+
+ </br>
+
+ ![](Screenshot 2021-05-21 at 00.53.09.png)  </br>
+
+
+ ## Run 2
+ This the result I got on run 2 when I refactor my code and it displayed a full report below:
+ All tests passed.
+   
+ ![](Screenshot 2021-05-21 at 00.53.09.png)  </br>
+
+
+ </br></br>
+
+
+
 # Team Version Control
 
 The main version control that I have used for this assignment is **GitHub**.
@@ -262,6 +284,7 @@ It has been shown to accelerate and streamline the software development process.
 A pull request is a method of submitting your work to an open project. The use of good pull requests within a team's workflow enhances the overall team productivity while minimizing frustration that can occur when an error occurs.
 
 Pull Requests have been shown to be more useful when they are simple to evaluate and test.
+[This link showing where I am using the code review checklist in my pull request!](https://github.com/cormacmattimoe/SoftwareQualityAssuranceFinalCa/pull/5)
 
 
 
