@@ -194,9 +194,9 @@ public class Controller {
         }
 
         	//Gets a rubric
-	public Rubric getARubric(String nameOfRubric) {
-        Rubric rubricFound = null;
-		for (Rubric rubric : listOfRubrics) {
+	    public Rubric getARubric(String nameOfRubric) {
+            Rubric rubricFound = null;
+		    for (Rubric rubric : listOfRubrics) {
 			if (rubric.getRubricName().equalsIgnoreCase(nameOfRubric)) {
                 System.out.println("Rubric was found " + rubric.getRubricName());  
 				rubricFound = rubric;
@@ -303,8 +303,6 @@ public class Controller {
 	}
 
 
- 
-
 
     public Boolean addStudentGrade(String criteriaName, String rubricName, String nameOfStudent,int gradeOfStudent)
     {
@@ -386,7 +384,7 @@ public class Controller {
 		int max=0;
 		for(StudentGrade grade:grades) {
 			if(grade.getScore(criterion)>max) {
-				max=grade.getScore(criterion);
+				max = grade.getScore(criterion);
 			}
 		}
 		return max;
