@@ -172,7 +172,7 @@ The features include:
 
 
  ##  Run  1
- ![](Screenshot 2021-05-21 at 14.09.36.png) </br> 
+ ![](https://github.com/cormacmattimoe/SoftwareQualityAssuranceFinalCa/blob/96ebfe7dce09301c8695aa1c331c8777a8e8e3b0/Screenshot%202021-05-20%20at%2014.09.36.png) </br> 
  As you can see from the screenshot it highlights:
  A full report on the tests that pass and the tests that fail. 
  You can see that 12 passed and 6 failed meaning that I needed get all tests to pass successfully.
