@@ -18,7 +18,7 @@ public class SQATest {
 
 Controller controller = new Controller();
  
-
+// Testing for creation fo a specific rubric
 @Test
     public void testCreatingRubric()
     {
