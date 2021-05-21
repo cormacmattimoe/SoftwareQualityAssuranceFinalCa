@@ -126,6 +126,10 @@ This velocity metric will be used to calculate how quickly the team is progressi
 
 TDD is a software creation methodology in which test cases are created to define and verify what the code can do. In simple terms, test cases for each feature are developed and checked first, and if the test fails, new code is written to pass the test, resulting in code that is straightforward and bug-free.
 
+[This is an example of a commit that follows a test driven development approach](https://github.com/cormacmattimoe/SoftwareQualityAssuranceFinalCa/commit/4b6ca76b8dfa186f60ca3a2da7168f5ec94148f6)
+
+In this commit, I create a method for creating a rubric and getting the Rubric by its name
+
 ***How to perform Test-Driven Development***
 
 
