@@ -105,8 +105,7 @@ public class Controller {
             String nameOfStudent = scan.nextLine();
             System.out.println("What is the grade of this student?");
             int grade = scan.nextInt();
-            Rubric ruber = new Rubric();
-            addStudentGradeToCriterion(ruber, nameOfStudent, grade);
+            addStudentGrade(c, rubicre, nameOfStudent, grade);
             showMenu();
             break;
         default:
@@ -395,8 +394,8 @@ public class Controller {
 	//This calculates standard deviation score of all criterions
 	public double getStandardDeviationForCriterion(Rubric rubric, String criterion) {
 		List<StudentGrade> listOfGrades = rubric.getStudentGrades();
-		double mean = getAverageForCriterion(rubric,criterion);
-		double standardDev = 0;
+		double mean= getAverageForCriterion(rubric,criterion);
+		double standardDev=0;
 		int count= listOfGrades.size();
 		for(StudentGrade grade:listOfGrades) {
             standardDev+= Math.pow((grade.getScore(criterion) - mean),2);	

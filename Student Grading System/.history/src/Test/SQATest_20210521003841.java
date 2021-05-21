@@ -200,7 +200,25 @@ Controller controller = new Controller();
 	assertEquals(3.625,controller.getAverageForCriterion(rubric,sQACriterion),0.01);
     
    }
+
+       //Testing if min in criterion is calulated correctly
+       @Test	
+       public void testStudentGradeRule() {
+           Rubric rubric=controller.createRubric("DT354");
+           String sQACriterion="SQA";
+           String madCriterion="MAD";
+           controller.addCriterionToRubric(rubric, sQACriterion);
+           controller.addCriterionToRubric(rubric, madCriterion);
+           StudentGrade grade1 =controller.addStudentGradeToCriterion(rubric,"Tom",2);
+           StudentGrade grade2 =controller.addStudentGradeToCriterion(rubric,"Paul",3);
+           StudentGrade grade3 =controller.addStudentGradeToCriterion(rubric,"Sean",4);
+           grade2.addMark(sQACriterion,2);
+           StudentGrade grade4 =controller.addStudentGradeToCriterion(rubric,"Conor",5);
+           grade3.addMark(madCriterion, 7);
+           assertTrue("Student", condition);
+         }
    
+
     //Testing if min in criterion is calulated correctly
       @Test	
     public void testMinForCriterion() {
@@ -215,7 +233,7 @@ Controller controller = new Controller();
         grade2.addMark(sQACriterion,2);
         StudentGrade grade4 =controller.addStudentGradeToCriterion(rubric,"Conor",5);
         grade3.addMark(madCriterion, 2);
-        assertEquals(2.0,controller.getMinForCriterion(rubric,sQACriterion),0.01);
+        assertEquals(3.25,controller.getAverageForCriterion(rubric,sQACriterion),0.01);
       }
 
     //Testing if Min in criterion is calulated correctly

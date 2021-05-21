@@ -200,7 +200,10 @@ Controller controller = new Controller();
 	assertEquals(3.625,controller.getAverageForCriterion(rubric,sQACriterion),0.01);
     
    }
+
+
    
+
     //Testing if min in criterion is calulated correctly
       @Test	
     public void testMinForCriterion() {

@@ -396,7 +396,7 @@ public class Controller {
 	public double getStandardDeviationForCriterion(Rubric rubric, String criterion) {
 		List<StudentGrade> listOfGrades = rubric.getStudentGrades();
 		double mean = getAverageForCriterion(rubric,criterion);
-		double standardDev = 0;
+		double standardDev=0;
 		int count= listOfGrades.size();
 		for(StudentGrade grade:listOfGrades) {
             standardDev+= Math.pow((grade.getScore(criterion) - mean),2);	

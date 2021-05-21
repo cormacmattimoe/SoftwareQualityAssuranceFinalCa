@@ -201,6 +201,7 @@ Controller controller = new Controller();
     
    }
    
+
     //Testing if min in criterion is calulated correctly
       @Test	
     public void testMinForCriterion() {
