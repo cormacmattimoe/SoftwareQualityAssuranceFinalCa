@@ -10,18 +10,12 @@ import Entities.StudentGrade;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.ResourceBundle.Control;
 
 public class SQATest {
 
-//    testing first commit to test suite
 Controller controller = new Controller();
  
 
@@ -32,6 +26,7 @@ Controller controller = new Controller();
         assertTrue(controller.listOfRubrics.contains(rubric));
     }
     
+    //Testing for viewing a rubric
     @Test
     public void testViewARubric()
     {
@@ -44,6 +39,7 @@ Controller controller = new Controller();
         r = controller.getARubric("D68");
         assertTrue(r.getRubricName().equals("D68"));
     }
+    //Testing for duplication of rubric
     @Test
     public void testCreatingDuplicateRubric()
     {
@@ -51,6 +47,7 @@ Controller controller = new Controller();
         controller.createRubric("Rubric1");
         assertTrue(controller.listOfRubrics.size()==1);
     }
+
     @Test
     public void testCreateCriterion()
     {
@@ -66,6 +63,7 @@ Controller controller = new Controller();
        
     }
 
+    //Testing for duplication of criteria
     @Test
     public void testDuplicateCriteria()
 

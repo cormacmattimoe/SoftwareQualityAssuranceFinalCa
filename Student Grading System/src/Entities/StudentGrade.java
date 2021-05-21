@@ -9,12 +9,12 @@ import java.util.HashMap;
 public class StudentGrade {
 
     private String studentName;
-    private int grade;
     ArrayList<Criterion> criteria = new ArrayList<Criterion>();
     HashMap<String, Integer> listOfAllMarks = new HashMap<String, Integer>();
 
     
 
+    // Blank constructor here
     public StudentGrade() {
     }
 
@@ -37,14 +37,6 @@ public class StudentGrade {
 
 
 
-    public int getGrade() {
-        return grade;
-    }
-
-
-    public void setGrade(int grade) {
-        this.grade = grade;
-    }
     //Returns a score of a criterion
 	public int getScore(String criterion) {
 		return listOfAllMarks.get(criterion);
