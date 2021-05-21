@@ -1,21 +1,29 @@
 package Entities;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 
-
-// Student is been described as having a name and list of modules 
+// Sules 
 // related to them
 
 public class StudentGrade {
 
     private String studentName;
-    private int grade;
+    ArrayList<Criterion> criteria = new ArrayList<Criterion>();
+    HashMap<String, Integer> listOfAllMarks = new HashMap<String, Integer>();
 
     
 
+    // Blank constructor here
     public StudentGrade() {
     }
 
-    
+
+
+	public StudentGrade(String name) {
+		this.studentName=name;
+	}
+
 
     public String getStudentName() {
         return studentName;
@@ -29,24 +37,35 @@ public class StudentGrade {
 
 
 
-    public int getGrade() {
-        return grade;
-    }
+    //Returns a score of a criterion
+	public int getScore(String criterion) {
+		return listOfAllMarks.get(criterion);
+	}
+
+    //
+	public void addMark(String criterion, int score) {
+		if(score < 6 && score >0) {
+		listOfAllMarks.put(criterion,score);
+		}else {
+            System.out.println("The Score must be between 1-5");
+			throw new IllegalArgumentException("The Score must be between 1-5");
+		}
+	}
+	//This is returning criterions marks
+	public HashMap<String, Integer> getCriterionMarks(){
+		return listOfAllMarks;
+	}
 
 
 
-    public void setGrade(int grade) {
-        this.grade = grade;
-    }
-
-
-
+/*
     @Override
     public String toString() {
         return 
         "Student{" +
-                "studentName ='" + studentName + '\'' +
-                ", Modules =" + grade +
+                "Student Name ='" + studentName + '\'' +
+                ", Student Grade =" + grade +
                 '}';
     }
+    */
 }
